@@ -2,31 +2,56 @@ import UIKit
 
 class EventsViewController: UIViewController, UITableViewDataSource {
     
-    @IBOutlet weak var eventsTable: UITableView!
-    static var events = [Event]()
-    
-    var getterPoster: GetterPoster = GetterPoster()
+    var eventList: [Event] = []
+    @IBOutlet weak var listTables: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventsTable.dataSource = self
-        getterPoster.send()
+        listTables.dataSource = self
+        getEvents()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        eventsTable.reloadData()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        listTables.reloadData()
+    }
+    
+    func getEvents() {
+        let urlSession = URLSession.shared
+        let url =  URL(string: "https://superapi.netlify.app/api/db/eventos")
+        
+        urlSession.dataTask(with: url!) { data, response, error  in
+            
+            if let data = data {
+                let json = try? JSONSerialization.jsonObject(with: data)
+                for i in json as! [[String: Any]]{
+                    let ev = Event(json: i)
+                    self.eventList.append(ev)
+                    
+                }
+                DispatchQueue.main.async {
+                    self.listTables.reloadData()
+                }
+            }
+            
+        }.resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EventsViewController.events.count
+        return eventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventRow: EventRow = tableView.dequeueReusableCell(withIdentifier: "eventRowId", for: indexPath) as! EventRow
+        let eventRow = listTables.dequeueReusableCell(withIdentifier: "eventRowId", for: indexPath) as! EventRow
         
-        let event = EventsViewController.events[indexPath.row]
+        let dateFormatted = NSDate(timeIntervalSince1970: TimeInterval(eventList[indexPath.row].date))
         
-        let date = event.date.description.components(separatedBy: " ")
-        eventRow.nameDateEvent.text = event.name + "  -  " + date[0] + " " + date[1]
+        eventRow.nameEvent.text = eventList[indexPath.row].name
+        eventRow.date.text = "\(dateFormatted)"
+//        "\(eventList[indexPath.row].name)  \(dateFormatted)"
+        
+        
         return eventRow
     }
+    
+    
 }

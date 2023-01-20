@@ -118,25 +118,31 @@
                                     <segue destination="xuZ-sg-XNZ" kind="show" id="id8-TZ-oTN"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6lX-YY-W2x">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6lX-YY-W2x">
                                 <rect key="frame" x="0.0" y="246" width="414" height="616"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventRowId" id="m06-So-yUo" customClass="EventRow" customModule="Agenda" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m06-So-yUo" id="P6a-fQ-OyN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventRowId" text="Event - Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4o-Sh-fyh">
-                                                    <rect key="frame" x="59" y="11" width="95" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventRowId" text="Event " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4o-Sh-fyh">
+                                                    <rect key="frame" x="59" y="31" width="47.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd8-Nk-HLJ">
+                                                    <rect key="frame" x="59" y="68" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1g-JH-ffp" userLabel="EditIcon">
-                                                    <rect key="frame" x="340" y="0.0" width="43" height="70"/>
+                                                    <rect key="frame" x="340" y="0.0" width="43" height="100"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
                                                 </button>
@@ -144,15 +150,17 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="z1g-JH-ffp" secondAttribute="bottom" id="3NV-0E-TT8"/>
                                                 <constraint firstItem="l4o-Sh-fyh" firstAttribute="leading" secondItem="P6a-fQ-OyN" secondAttribute="leadingMargin" constant="39" id="49F-0E-Sx7"/>
-                                                <constraint firstItem="l4o-Sh-fyh" firstAttribute="bottom" secondItem="P6a-fQ-OyN" secondAttribute="bottomMargin" id="Id3-MS-E5O"/>
-                                                <constraint firstItem="l4o-Sh-fyh" firstAttribute="top" secondItem="P6a-fQ-OyN" secondAttribute="topMargin" id="RAu-jV-xZA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zd8-Nk-HLJ" secondAttribute="bottom" id="PHK-AF-3qs"/>
+                                                <constraint firstItem="l4o-Sh-fyh" firstAttribute="top" secondItem="P6a-fQ-OyN" secondAttribute="topMargin" constant="20" id="RAu-jV-xZA"/>
+                                                <constraint firstItem="zd8-Nk-HLJ" firstAttribute="leading" secondItem="P6a-fQ-OyN" secondAttribute="leadingMargin" constant="39" id="bVV-2Y-xnv"/>
                                                 <constraint firstItem="z1g-JH-ffp" firstAttribute="top" secondItem="P6a-fQ-OyN" secondAttribute="top" id="gUg-b3-g2R"/>
                                                 <constraint firstAttribute="trailing" secondItem="z1g-JH-ffp" secondAttribute="trailing" constant="31" id="qef-Uo-iBs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="date" destination="zd8-Nk-HLJ" id="BCA-Zb-7ka"/>
                                             <outlet property="editIcon" destination="z1g-JH-ffp" id="ZzH-sm-Lar"/>
-                                            <outlet property="nameDateEvent" destination="l4o-Sh-fyh" id="0HA-ES-pGR"/>
+                                            <outlet property="nameEvent" destination="l4o-Sh-fyh" id="fff-xu-LPy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -174,7 +182,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mfb-NN-rsy"/>
                     <connections>
-                        <outlet property="eventsTable" destination="6lX-YY-W2x" id="MBD-g8-wNV"/>
+                        <outlet property="listTables" destination="6lX-YY-W2x" id="apX-4o-ADN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3o-Iy-zkQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,7 +224,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="getEventInfo:" destination="xuZ-sg-XNZ" eventType="touchUpInside" id="99V-xz-tta"/>
+                                    <action selector="sendNewEventInfo:" destination="xuZ-sg-XNZ" eventType="touchUpInside" id="z8I-SH-1P1"/>
                                 </connections>
                             </button>
                         </subviews>

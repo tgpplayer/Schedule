@@ -18,13 +18,32 @@ class EventCreationViewController: UIViewController {
         
     }
     
-    @IBAction func getEventInfo(_ sender: UIButton) {
-        let name = eventName.text
-        let date = eventDate.date
-        event = Event(name: name!, date: date)
-        EventsViewController.events.append(event!)
-        print(EventsViewController.events)
+    @IBAction func sendNewEventInfo(_ sender: UIButton) {
+        let url = URL(string: "https://superapi.netlify.app/api/db/eventos")
+
+        var POSTpetition = URLRequest(url: url!)
+        POSTpetition.httpMethod = "POST"
+        POSTpetition.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        POSTpetition.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+        let parameters: [String: Any] = [
+            "name": eventName.text!,
+            "date": Int(eventDate.date.timeIntervalSince1970)
+        ]
+        do {
+            POSTpetition.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let urlSession = URLSession.shared
+        urlSession.dataTask(with: POSTpetition) {data, response, error in
+            print("Datos \(String(describing: data))")
+            
+        }.resume()
+        
         navigationController?.popToRootViewController(animated: true)
     }
+    
     
 }

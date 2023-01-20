@@ -2,11 +2,11 @@ import UIKit
 
 class Event {
     var name: String
-    var date: Date
+    var date: Int
     
-    init(name: String, date: Date) {
-        self.name =  name
-        self.date = date
+    init(json: [String: Any]) {
+        name = json["name"] as! String
+        date = json["date"] as? Int ?? 0
     }
 
 }
