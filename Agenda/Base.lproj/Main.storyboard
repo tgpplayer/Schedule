@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Agenda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Agenda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Enter"/>
                                 <connections>
                                     <action selector="validateUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1O2-VN-YB0"/>
-                                    <segue destination="VjI-I3-dMu" kind="presentation" modalPresentationStyle="fullScreen" id="xuo-9A-b1N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -87,6 +86,11 @@
                             <constraint firstItem="ZQK-Lw-yEl" firstAttribute="top" secondItem="25V-dO-l8m" secondAttribute="bottom" constant="80" id="xcO-eY-7iN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="GO5-Ob-isg" id="Rn4-1b-Hiw"/>
+                        <outlet property="username" destination="ZQK-Lw-yEl" id="zMK-Dz-vCx"/>
+                        <segue destination="VjI-I3-dMu" kind="presentation" identifier="eventList" modalPresentationStyle="fullScreen" id="99I-DN-CiB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,6 +338,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s4K-pf-ugO"/>
+                    <connections>
+                        <outlet property="newUserName" destination="rqh-cb-s3c" id="vsA-LS-KcZ"/>
+                        <outlet property="newUserPassword" destination="9Tu-EH-HJ4" id="hAF-gE-wwh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hC-ul-JWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

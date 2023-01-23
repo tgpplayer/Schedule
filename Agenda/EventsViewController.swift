@@ -13,6 +13,7 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         listTables.reloadData()
+        getEvents()
     }
     
     func getEvents() {
