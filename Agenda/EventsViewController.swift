@@ -8,12 +8,12 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         listTables.dataSource = self
+        
         getEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         listTables.reloadData()
-        getEvents()
     }
     
     func getEvents() {
@@ -44,12 +44,12 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eventRow = listTables.dequeueReusableCell(withIdentifier: "eventRowId", for: indexPath) as! EventRow
         
-        let dateFormatted = NSDate(timeIntervalSince1970: TimeInterval(eventList[indexPath.row].date))
+        let dateFormatted = NSDate(timeIntervalSince1970: TimeInterval(Double(eventList[indexPath.row].date)))
+        
+        print("Fecha formateada correctamente -> \(dateFormatted)")
         
         eventRow.nameEvent.text = eventList[indexPath.row].name
         eventRow.date.text = "\(dateFormatted)"
-//        "\(eventList[indexPath.row].name)  \(dateFormatted)"
-        
         
         return eventRow
     }

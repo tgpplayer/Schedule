@@ -19,9 +19,11 @@ class EventCreationViewController: UIViewController {
     }
     
     @IBAction func sendNewEventInfo(_ sender: UIButton) {
+        print(eventDate.date.timeIntervalSince1970)
+        print(eventDate.date)
         let parameters: [String: Any] = [
             "name": eventName.text!,
-            "date": String(Int(eventDate.date.timeIntervalSince1970))
+            "date": String(Double(eventDate.date.timeIntervalSince1970))
         ]
         
         let url = URL(string: "https://superapi.netlify.app/api/db/eventos")
