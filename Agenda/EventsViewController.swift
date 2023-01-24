@@ -8,12 +8,11 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         listTables.dataSource = self
-        
-        getEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         listTables.reloadData()
+        getEvents()
     }
     
     func getEvents() {
@@ -27,6 +26,11 @@ class EventsViewController: UIViewController, UITableViewDataSource {
                 for i in json as! [[String: Any]]{
                     let ev = Event(json: i)
                     self.eventList.append(ev)
+                    print("PRINTS DE CUANDO SE AÑADE UN EVENTO A LA LISTA")
+                    if ev.name == "NN" {
+                        print(ev.date)
+                    }
+                    
                     
                 }
                 DispatchQueue.main.async {
@@ -44,7 +48,7 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eventRow = listTables.dequeueReusableCell(withIdentifier: "eventRowId", for: indexPath) as! EventRow
         
-        let dateFormatted = NSDate(timeIntervalSince1970: TimeInterval(Double(eventList[indexPath.row].date)))
+        let dateFormatted = NSDate(timeIntervalSince1970: TimeInterval(eventList[indexPath.row].date / 1000))
         
         print("Fecha formateada correctamente -> \(dateFormatted)")
         
